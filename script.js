@@ -55,6 +55,65 @@ navBar.addEventListener('dblclick', function() {
   }
 });
 
+// Fonctionnalité 6
+let getCards = document.getElementsByClassName('card')//[0];
+let getView = document.getElementsByClassName('btn-success')//[0];
+let getImg = document.getElementsByClassName('card-img-top')//[0];
+let getText = document.getElementsByClassName('card-text')//[0];
+let contentCard = [];
+
+/*
+getCards.addEventListener('mouseover', function(){
+  if (contentCard = 'normal'){
+    getImg.style.width = "20%";
+    getText.textContent = '';
+    contentCard = 'reduce';
+  } else if (contentCard = 'reduce'){
+    getImg.style.width = "100%";
+    getText.textContent = '';
+    contentCard = 'normal';
+  }
+})
+*/
+
+for (let i = 0; i < getCards.length; i++) {
+  contentCard.push(getCards[i].getElementsByClassName("card-text")[0].textContent)
+}
+
+for (let i = 0; i < getView.length; i++){
+if (getImg[i].style.width === "20%") {
+  getView[i].addEventListener('mouseover', function(){
+    getImg[i].style.width = '';
+    getText[i].textContent = contentCard[i];
+  });
+  } else {
+    getView[i].addEventListener('mouseover', function(){
+      getText[i].textContent = '';
+      getImg[i].style.width = "20%";
+    });
+  }
+};
+
+// Fonctionnalité 7 
+let cardToMove = document.getElementsByClassName('col-md-4');
+let row = document.getElementsByClassName('row')[1];
+let greyArrow = document.getElementsByClassName('btn-secondary')[0];
+
+greyArrow.addEventListener('click', function() {
+  row.insertBefore(cardToMove[cardToMove.length-1], cardToMove[0]);
+});
+
+// Fonctionnalité 8
+let blueArrow = document.getElementsByClassName('btn-primary')[0];
+
+blueArrow.addEventListener('click', function(e) {
+  e.preventDefault();
+  row.insertBefore(cardToMove[cardToMove.length-1], cardToMove[0].nextSibling);
+});
+
+// Fonctionnalité 9
+
+
 
 
 
